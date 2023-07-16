@@ -84,8 +84,8 @@
                         Padding="10"
                         FontSize="14"
                         Content="Delete Account"
-                    Command="{Binding DeleteCommand}"
-                        Name="Delete_student" Click="Delete_student_Click"/>
+                    
+                        Name="Delete_student" />
         </StackPanel>
 
         <Border Grid.Column="1">
@@ -132,7 +132,7 @@
                       Background="Transparent" 
                       Height="385" 
                       ItemsSource="{Binding Students,UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding SelectedStudent,UpdateSourceTrigger=PropertyChanged}" SelectionChanged="Listview_SelectionChanged" >
+                      SelectedItem="{Binding SelectedStudent,UpdateSourceTrigger=PropertyChanged}"   >
 
                     <ListView.ItemTemplate >
                         <DataTemplate>

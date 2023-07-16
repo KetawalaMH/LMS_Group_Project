@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Group_Project" d:DataContext="{d:DesignInstance Type=local:UserDataContext}"
+        xmlns:local="clr-namespace:Group_Project" 
         mc:Ignorable="d"
         Title="SelectModuleWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:SelectModulesVM/>
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="Button" x:Key="UniqueButtonStyle">
             <Setter Property="Background" Value="#2980b9" />
@@ -42,39 +45,63 @@
                 <GradientStop Color="#3498db" Offset="1" />
             </LinearGradientBrush>
         </Grid.Background>
-        <StackPanel >
-            <ListView ItemsSource="{Binding Modules}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Module Code" 
-                                        DisplayMemberBinding="{Binding ModuleCode}" 
-                                        Width="200"
-                                        />
-                        <GridViewColumn Header="Module Name" 
-                                        DisplayMemberBinding="{Binding ModuleName}" 
-                                        Width="500"/>
-                        <GridViewColumn Header="Select">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding IsSelected}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
+        <StackPanel 
+                    Background="LightGray" 
+                    VerticalAlignment="Top" 
+                    Orientation="Vertical" >
+            <StackPanel  HorizontalAlignment="Left"
+                         Height="30"
+                         Width="640"
+                         Background="Gray" 
+                         Orientation="Horizontal" >
+
+                <TextBlock Text="Module Code"
+                           Foreground="Black" 
+                           Margin="50 0 0 0" 
+                            />
+                <TextBlock Text="Module Name" 
+                           Foreground="Black" 
+                           Margin="20 0 0 0"
+                           />
+                <TextBlock Text="Select"  
+                           Foreground="Black"
+                           Width="80"
+                           Margin="20 0 0 0"
+                           />
+                
+            </StackPanel>
+
+            <ListView x:Name="Listview"  
+                      Margin="0 20 0 0" 
+                      Background="Transparent" 
+                      Height="385" 
+                      ItemsSource="{Binding Modules,UpdateSourceTrigger=PropertyChanged}">
+
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Border Background="Transparent" 
+                                Padding="0.1" 
+                                Width="380" 
+                                Height="35" >
+                            <StackPanel
+                                        Background="Transparent" 
+                                        Orientation="Horizontal" HorizontalAlignment="Left" Width="640" >
+
+
+                                <TextBlock Text="{Binding ModuleCode,UpdateSourceTrigger=PropertyChanged}"  
+                                           Width="106" />
+                                <TextBlock Text="{Binding ModuleName,UpdateSourceTrigger=PropertyChanged}" 
+                                           Width="106"/>
+                                <CheckBox IsChecked="False"/>
+
+
+                            </StackPanel>
+
+                        </Border>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
             </ListView>
-
         </StackPanel>
-        <Button x:Name="SaveModules"
-                Style="{StaticResource UniqueButtonStyle}"
-                Width="150"
-                Height="50"
-                FontSize="14"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Margin="20"
-                Padding="10"
-                Content="Save"/>
-
     </Grid>
 </Window>

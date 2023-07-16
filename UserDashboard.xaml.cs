@@ -35,11 +35,16 @@ namespace Group_Project
             CreateStudent.Show();
         }
 
-        private void Delete_student_Click(object sender, RoutedEventArgs e)
+       /* private void Delete_student_Click(object sender, RoutedEventArgs e)
         {
             vm = new UserDashboardVM();
             viewModel.DeleteStudent(vm.SelectedStudent);
 
+        }
+       */
+        private void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

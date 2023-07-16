@@ -102,7 +102,7 @@ namespace Group_Project
             Students = new ObservableCollection<Student>(GetStudentsFromDatabase());
         }
 
-        private IEnumerable<Student> GetStudentsFromDatabase()
+        private static IEnumerable<Student> GetStudentsFromDatabase()
         {
             // Retrieve the student data from the student table in the database
             // and return the result as a collection of Student objects
