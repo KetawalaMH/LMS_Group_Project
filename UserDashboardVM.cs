@@ -3,22 +3,25 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Group_Project
 {
     public partial class UserDashboardVM :ObservableObject
     {
+        private SQLiteConnection connection;
         [ObservableProperty]
         public ObservableCollection<Student> students;
-        [ObservableProperty]
+       [ObservableProperty]
         public Student selectedStudent = null;
 
 
-
+        
         public void CloseMainWindow()
         {
             Application.Current.MainWindow.Close();
@@ -28,7 +31,7 @@ namespace Group_Project
 
 
         [RelayCommand]
-        public void messeag()
+        public void Messeag()
         {
 
             MessageBox.Show($"{SelectedStudent.StudentName} GPA value must be between 0 and 4.", "Error");
@@ -52,10 +55,18 @@ namespace Group_Project
         {
             if (SelectedStudent != null)
             {
-                string name = SelectedStudent.StudentID;
-                Students.Remove(SelectedStudent);
-                MessageBox.Show($"{name} is Deleted successfuly.", "DELETED \a ");
+                string deleteQuery = "DELETE FROM Students WHERE StudentID = @StudentID";
+                using (SQLiteCommand deleteCommand = new SQLiteCommand(deleteQuery, connection))
+                {
+                    deleteCommand.Parameters.AddWithValue("@StudentID", SelectedStudent.StudentID);
 
+                    connection.Open();
+                    deleteCommand.ExecuteNonQuery();
+                    connection.Close();
+                    string name = SelectedStudent.StudentID;
+                    Students.Remove(SelectedStudent);
+                    MessageBox.Show($"{name} is Deleted successfuly.", "DELETED \a ");
+                }
             }
             else
             {
@@ -89,11 +100,7 @@ namespace Group_Project
             }
         }
 
-        public UserDashboardVM()
-        {
-            // Initialize the students collection by retrieving data from the student table in the database
-            LoadStudents();
-        }
+        
 
         private void LoadStudents()
         {
@@ -114,6 +121,14 @@ namespace Group_Project
             }
         }
 
+        public UserDashboardVM()
+        {
+            // Initialize the students collection by retrieving data from the student table in the database
+            LoadStudents();
+            UserDataContext dataContext = new UserDataContext();
+            string connectionString = $"Data Source={dataContext.path}"; // Replace with your SQLite connection string
+            connection = new SQLiteConnection(connectionString);
+        }
 
     }
 }

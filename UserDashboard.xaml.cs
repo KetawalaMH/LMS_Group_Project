@@ -14,19 +14,22 @@ using System.Windows.Shapes;
 
 namespace Group_Project
 {
+    
     /// <summary>
     /// Interaction logic for UserDashboard.xaml
     /// </summary>
-    
+
     public partial class UserDashboard : Window
     {
-        private StudentVM viewModel;
-        private UserDashboardVM vm;
+        private UserDashboardVM viewModel;
+
+
         public UserDashboard()
         {
             InitializeComponent();
-            viewModel = new StudentVM();
+            viewModel = new UserDashboardVM();
             DataContext = viewModel;
+            
         }
 
         private void Create_student_Click(object sender, RoutedEventArgs e)
@@ -35,16 +38,11 @@ namespace Group_Project
             CreateStudent.Show();
         }
 
-       /* private void Delete_student_Click(object sender, RoutedEventArgs e)
-        {
-            vm = new UserDashboardVM();
-            viewModel.DeleteStudent(vm.SelectedStudent);
-
-        }
-       */
         private void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
+
+       
     }
 }

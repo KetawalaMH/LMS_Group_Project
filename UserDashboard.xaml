@@ -84,8 +84,8 @@
                         Padding="10"
                         FontSize="14"
                         Content="Delete Account"
-                    
-                        Name="Delete_student" />
+                    Command="{Binding DeleteCommand}"
+                        Name="Delete_student"  />
         </StackPanel>
 
         <Border Grid.Column="1">
@@ -105,11 +105,11 @@
                             />
                     <TextBlock Text="Student Name" 
                            Foreground="Black" 
-                           Margin="20 0 0 0"
+                           Margin="20 0 40 0"
                            />
                     <TextBlock Text="Age"  
                            Foreground="Black"
-                           Width="80"
+                           Width="20"
                            Margin="20 0 0 0"
                            />
                     <TextBlock Text="Gpa" 
@@ -132,13 +132,14 @@
                       Background="Transparent" 
                       Height="385" 
                       ItemsSource="{Binding Students,UpdateSourceTrigger=PropertyChanged}"
-                      SelectedItem="{Binding SelectedStudent,UpdateSourceTrigger=PropertyChanged}"   >
+                      SelectedItem="{Binding SelectedStudent,UpdateSourceTrigger=PropertyChanged}"  
+                      SelectionChanged="Listview_SelectionChanged">
 
                     <ListView.ItemTemplate >
                         <DataTemplate>
                             <Border Background="Transparent" 
                                 Padding="0.1" 
-                                Width="380" 
+                                Width="640" 
                                 Height="35" >
                                 <StackPanel
                                         Background="Transparent" 
@@ -146,19 +147,24 @@
 
 
                                     <TextBlock Text="{Binding StudentID,UpdateSourceTrigger=PropertyChanged}"  
-                                           Width="106" />
+                                           Width="106"  Style="{StaticResource ListView}" />
                                     <TextBlock Text="{Binding StudentName,UpdateSourceTrigger=PropertyChanged}" 
-                                           Width="106"/>
+                                           Width="106"
+                                                Style="{StaticResource ListView}" />
                                     <TextBlock Text="{Binding age,UpdateSourceTrigger=PropertyChanged}"  
-                                           Width="106"/>
+                                           Width="15"
+                                                Style="{StaticResource ListView}" />
                                     <TextBlock Text="{Binding GPA,UpdateSourceTrigger=PropertyChanged}"  
                                             Margin="20 0 0 0" 
-                                               Width="106"/>
+                                               Width="10"
+                                                Style="{StaticResource ListView}" />
                                     <TextBlock Text="{Binding Semester,UpdateSourceTrigger=PropertyChanged}"  
-                                            Margin="20 0 0 0" 
-                                               Width="106"/>
+                                            Margin="20 0 40 0" 
+                                               Width="10"
+                                                Style="{StaticResource ListView}" />
                                     <TextBlock Text="{Binding StudentAddress,UpdateSourceTrigger=PropertyChanged}"  
-                                            Width="106"/>
+                                            Width="106"
+                                                Style="{StaticResource ListView}" />
 
                                 </StackPanel>
 

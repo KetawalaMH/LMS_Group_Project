@@ -107,7 +107,7 @@ namespace Group_Project
             }
         }
 
-        public void DeleteStudent(Student student)
+        /*public void DeleteStudent(Student student)
         {
             // Delete the student from the Students table
             string deleteQuery = "DELETE FROM Students WHERE StudentID = @StudentID";
@@ -119,7 +119,7 @@ namespace Group_Project
                 deleteCommand.ExecuteNonQuery();
                 connection.Close();
             }
-        }
+        }*/
         public Student GetStudentDetails(int studentID)
         {
             // Retrieve the student details from the Students table
