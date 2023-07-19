@@ -103,5 +103,12 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+        <Button Content="Save"
+                Name="SaveModule"
+                Style="{DynamicResource UniqueButtonStyle}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="200"
+                Height="50"/>
     </Grid>
 </Window>

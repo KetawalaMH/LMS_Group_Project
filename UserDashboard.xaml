@@ -68,6 +68,7 @@
                         Padding="10"
                         FontSize="14"
                         Content="View Account"
+                    Command="{Binding ViewStudentCommand}"
                         Name="View_student"/>
             <Button Width="120"
                     Style="{StaticResource UniqueButtonStyle}"
@@ -76,6 +77,7 @@
                         Padding="10"
                         FontSize="14"
                         Content="Update Account"
+                    Command="{Binding ExecuteEditStudentCommandCommand}"
                         Name="Update_student"/>
             <Button Width="120"
                         Height="80"

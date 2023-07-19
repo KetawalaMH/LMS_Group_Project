@@ -42,13 +42,14 @@ namespace Group_Project
             connection.Open();
             insertCommand.ExecuteNonQuery();
             connection.Close();
-
+            }
+/*
             // Insert the selected modules into the junction table
-           /* foreach (Module module in student.Modules)
+           foreach (Module module in student.Modules)
             {
                 string insertModuleQuery = "INSERT INTO StudentModules (StudentId, ModuleId) VALUES (@StudentId, @ModuleId)";
                 SQLiteCommand insertModuleCommand = new SQLiteCommand(insertModuleQuery, connection);
-                insertModuleCommand.Parameters.AddWithValue("@StudentId", studentId);
+                insertModuleCommand.Parameters.AddWithValue("@StudentId", student.StudentId);
                 insertModuleCommand.Parameters.AddWithValue("@ModuleId", module.ModuleCode);
                 connection.Open();
                 insertModuleCommand.ExecuteNonQuery();
@@ -70,11 +71,12 @@ namespace Group_Project
                 {
                     Modules.Add(module);
                 }
-            }*/
+            }
         }
 
-        public void UpdateStudent(Student student)
+       /* public void UpdateStudent(Student student)
         {
+
             // Check if the student exists in the database
             string checkQuery = "SELECT COUNT(*) FROM Students WHERE StudentID = @StudentID";
             using (SQLiteCommand checkCommand = new SQLiteCommand(checkQuery, connection))
@@ -105,7 +107,7 @@ namespace Group_Project
                 updateCommand.ExecuteNonQuery();
                 connection.Close();
             }
-        }
+        }*/
 
         /*public void DeleteStudent(Student student)
         {
@@ -119,7 +121,7 @@ namespace Group_Project
                 deleteCommand.ExecuteNonQuery();
                 connection.Close();
             }
-        }*/
+        }
         public Student GetStudentDetails(int studentID)
         {
             // Retrieve the student details from the Students table
@@ -150,7 +152,7 @@ namespace Group_Project
 
                 return student;
             }
-        }
+        }*/
 
 
     }

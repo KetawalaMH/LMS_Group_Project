@@ -97,7 +97,9 @@
                            Margin="10"
                            Padding="10"
                            FontSize="14"/>
-                <TextBox x:Name="GPATxt"
+                <TextBlock x:Name="GPATxt"
+                           Text="0"
+                           Background="White"
                          Height="50"
                          Width="300"
                          Margin="10"

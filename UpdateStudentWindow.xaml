@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="UpdateStudentWindow" Height="450" Width="800">
     <Window.DataContext>
-        <local:UserDashboardVM/>
+        <local:UpdateStudentVM/>
     </Window.DataContext>
     
 
@@ -55,12 +55,15 @@
                            Margin="10"
                            Padding="10"
                            FontSize="14"/>
-                <TextBox x:Name="StudentIDUpdateTxt"
+                <TextBlock x:Name="StudentIDUpdateTxt"
+                         Text="{Binding StudentID, UpdateSourceTrigger=PropertyChanged}"
                          Height="50"
                          Width="300"
                          Margin="10"
                          Padding="10"
-                         FontSize="14"/>
+                         FontSize="14"
+                           Background="White"
+                           Foreground="Black"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Student Name"
@@ -70,6 +73,7 @@
                            Padding="10"
                            FontSize="14"/>
                 <TextBox x:Name="StudentNameUpdateTxt"
+                         Text="{Binding Studentname, UpdateSourceTrigger=PropertyChanged}"
                          Height="50"
                          Width="300"
                          Margin="10"
@@ -85,6 +89,7 @@
                            FontSize="14"/>
                 <TextBox x:Name="StudentAgeUpdateTxt"
                          Height="50"
+                         Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"
                          Width="300"
                          Margin="10"
                          Padding="10"
@@ -99,6 +104,7 @@
                            FontSize="14"/>
                 <TextBox x:Name="StudentAddressUpdateTxt"
                          Height="50"
+                         Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}"
                          Width="300"
                          Margin="10"
                          Padding="10"
@@ -114,6 +120,7 @@
                 <TextBox x:Name="CurrentSemesterUpdateTxt"
                          Height="50"
                          Width="300"
+                         Text="{Binding Semester, UpdateSourceTrigger =PropertyChanged}"
                          Margin="10"
                          Padding="10"
                          FontSize="14"/>
@@ -133,13 +140,13 @@
                     Content="Save"
                     Style="{StaticResource UniqueButtonStyle}"
                     Name="SaveUpdateStudent"
-                    Command="{Binding ExecuteEditStudentCommandCommand}"
+                    Command="{Binding SaveCommand}"
                     Width="200"
                     Height="50"
                     Margin="10"
                     Padding="10"
                     FontSize="14"
-                    HorizontalAlignment="Right" Click="SaveUpdateStudent_Click" />
+                    HorizontalAlignment="Right" />
 
 
             </StackPanel>

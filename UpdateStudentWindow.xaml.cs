@@ -19,12 +19,12 @@ namespace Group_Project
     /// </summary>
     public partial class UpdateStudentWindow : Window
     {
-        private StudentVM viewModel;
-        public UpdateStudentWindow()
+        //private StudentVM viewModel;
+        public UpdateStudentWindow(UpdateStudentVM viewModel )
         {
             InitializeComponent();
-            viewModel = new StudentVM();
             DataContext = viewModel;
+            viewModel.CloseAction = () => Close(); 
         }
 
         private void UpdateModule_Click(object sender, RoutedEventArgs e)
@@ -34,7 +34,7 @@ namespace Group_Project
             selectmodule.Show();
         }
 
-        private void SaveUpdateStudent_Click(object sender, RoutedEventArgs e)
+       /* private void SaveUpdateStudent_Click(object sender, RoutedEventArgs e)
         {
             string StudentID = StudentIDUpdateTxt.Text;
             string StudentName = StudentNameUpdateTxt.Text;
@@ -59,8 +59,8 @@ namespace Group_Project
             MessageBox.Show("Details Updated succefully");
             UserDashboard userDashboard = new UserDashboard();
             userDashboard.Show();
+       
 
-
-        }
+        }*/
     }
 }

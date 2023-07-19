@@ -80,10 +80,11 @@ namespace Group_Project
         {
             if (SelectedStudent != null)
             {
-                var vm = new CrewateStudentVM(SelectedStudent);
+                var vm = new UpdateStudentVM(SelectedStudent);
                 vm.Title = "EDIT STUDENT";
+                var window = new UpdateStudentWindow(vm);
                
-
+                window.ShowDialog();
                 
 
 
@@ -99,8 +100,24 @@ namespace Group_Project
                 MessageBox.Show("Please Select the student", "Warning!");
             }
         }
+        [RelayCommand]
+        public void ViewStudent()
+        {
+            if (SelectedStudent != null)
+            {
+                var vm = new UpdateStudentVM(SelectedStudent);
+                vm.Title = "VIEW STUDENT";
+                var window = new ViewStudentWindow(vm);
 
-        
+                window.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please Select the student", "Warning!");
+            }
+        }
+
+
 
         private void LoadStudents()
         {
